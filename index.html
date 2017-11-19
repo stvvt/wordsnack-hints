@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Word Snack Hints</title>
+</head>
+
+<body>
+    <div>
+        <label>
+            Letters
+            <input name="letters" type="text">
+        </label>
+    </div>
+    <div>
+        <label>
+            Word Length
+            <input name="wordLength" type="number">
+        </label>
+    </div>
+    <div>
+        <button id="hints">Hints</button>
+    </div>
+
+    <h3>Hints</h3>
+    <ol id="hints">
+    </ol>
+</body>
+
+<script src="dist/app.bundle.js"></script>
+<script>
+    var letters = document.querySelector('input[name=letters]');
+    var wordLength = document.querySelector('input[name=wordLength]');
+    var results = document.querySelector('ol#hints');
+    var loading = document.createElement('span');
+    var isLoading = false;
+    loading.innerHTML = 'Loading ...';
+
+    function setLoading(state) {
+        if (isLoading ^ state) {
+            if (state) {
+                while (results.lastChild) {
+                    results.removeChild(results.lastChild);
+                }
+                results.appendChild(loading);
+            } else {
+                results.removeChild(loading);
+            }
+            isLoading = state;
+        }
+    }
+
+    document.querySelector('button#hints').addEventListener('click', function () {
+        setLoading(true);
+        wordsnack(letters.value, wordLength.value, function (word) {
+            setLoading(false);
+            var li = document.createElement('li');
+            li.innerText = word;
+            results.appendChild(li);
+        });
+    })
+</script>
+
+</html>
