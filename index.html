@@ -55,6 +55,9 @@
         setLoading(true);
         wordsnack(letters.value, wordLength.value, function (word) {
             setLoading(false);
+            if (word === null) {
+                return;
+            }
             var li = document.createElement('li');
             li.innerText = word;
             results.appendChild(li);

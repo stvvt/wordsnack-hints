@@ -8996,6 +8996,7 @@ function filterRealWords(candidates, cb) {
         }).forEach(function (key) {
           return cb(obj[key].title);
         });
+        cb(null);
       });
     }
   } catch (err) {

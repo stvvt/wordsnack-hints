@@ -25,6 +25,7 @@ function filterRealWords(candidates, cb) {
                 Object.keys(obj)
                     .filter(key => typeof obj[key].missing === 'undefined')
                     .forEach(key => cb(obj[key].title));
+                cb(null);
             });
     }
 }
