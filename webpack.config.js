@@ -1,23 +1,20 @@
 const path = require('path');
 
 module.exports = {
-    entry: ['@babel/polyfill', './src/lib/wordsnack.js'],
+    target: "web",
+    entry: ['./src/lib/wordsnack.ts'],
+    resolve: {
+        extensions: [".ts"]
+    },
     module: {
-        rules: [
-            {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                use: {
-                    loader: 'babel-loader',
-                    options: {
-                        presets: ['@babel/preset-env']
-                    }
-                }
-            }
+        loaders: [
+            // all files with a '.ts' or '.tsx' extension will be handled by 'ts-loader'
+            { test: /\.ts$/, loader: "ts-loader" }
         ]
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'app.bundle.js'
+        filename: 'app.bundle.js',
+        library: 'wordsnack'
     }
 };

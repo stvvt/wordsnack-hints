@@ -53,7 +53,7 @@
 
     document.querySelector('button#hints').addEventListener('click', function () {
         setLoading(true);
-        wordsnack(letters.value, wordLength.value, function (word) {
+        wordsnack.hints(letters.value, wordLength.value, function (word) {
             setLoading(false);
             if (word === null) {
                 return;

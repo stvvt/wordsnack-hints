@@ -1,4 +1,4 @@
-function *chunk(generator, size) {
+export default function *chunk<T>(generator: IterableIterator<T>, size: number): IterableIterator<T[]> {
     let groupItems = [];
     for (const i of generator) {
         groupItems.push(i);
@@ -12,5 +12,3 @@ function *chunk(generator, size) {
         yield groupItems;
     }
 }
-
-module.exports = chunk;
