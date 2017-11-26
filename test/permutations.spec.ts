@@ -1,42 +1,130 @@
 import permutations from "../src/lib/permutations";
+import { slide } from "../src/lib/permutations";
 import { expect } from "chai";
 
+interface ISample {
+    title?: string;
+    expectation: any;
+    [name: string]: any;
+}
+
 describe("permutations", () => {
-    it("should generate all permutations of array elements", () => {
-        const input = [1, 2, 3];
-        const expectation = [
+    const samples: ISample[] = [{
+        title: "one element",
+        input: [1],
+        expectation: [
+            [1]
+        ],
+    }, {
+        title: "two unique elements",
+        input: [1, 2],
+        expectation: [
+            [1, 2],
+            [2, 1]
+        ]
+    }, {
+        title: "two equal elements",
+        input: [1, 1],
+        expectation: [
+            [1, 1]
+        ]
+    }, {
+        title: "3 unique elements",
+        input: [1, 2, 3],
+        expectation: [
             [1, 2, 3],
             [2, 1, 3],
             [2, 3, 1],
             [1, 3, 2],
             [3, 1, 2],
             [3, 2, 1]
-        ];
-        const result = [];
-        for (const p of permutations(input)) {
-            result.push(p);
-        }
-
-        expect(result).to.have.same.deep.members(expectation);
-    });
-
-    it.only("should not generate a permutation more than once", () => {
-        const input = [1, 2, 1];
-        const expectation = [
+        ]
+    }, {
+        title: "repeating elements",
+        input: [1, 1, 2],
+        expectation: [
             [1, 2, 1],
             [2, 1, 1],
-            // [2, 1, 1],
-            [1, 1, 2],
-            // [1, 1, 2],
-            // [1, 2, 1]
-        ];
-        const result = [];
-        for (const p of permutations(input)) {
-            // tslint:disable-next-line:no-console
-            console.log(p);
-            result.push(p);
-        }
+            [1, 1, 2]
+        ]
+    }, {
+        title: "another repeating elements",
+        input: [1, 2, 1, 2],
+        expectation: [
+            [1, 2, 1, 2],
+            [2, 1, 1, 2],
+            [1, 1, 2, 2],
+            [2, 1, 2, 1],
+            [1, 2, 2, 1],
+            [2, 2, 1, 1],
+        ]
+    }];
 
-        // expect(result).to.have.same.deep.members(expectation);
-    });
+    for (const sample of samples.filter((s) => typeof (s as any).title !== "undefined")) {
+        it(`should generate all permutations of array elements: ${sample.title}`, () => {
+            const result = [];
+            for (const p of permutations(sample.input)) {
+                result.push(p);
+            }
+
+            expect(result).to.have.same.deep.members(sample.expectation);
+        });
+    }
+});
+
+describe("slide", () => {
+    const samples: ISample[] = [{
+        title: "one element",
+        input: [3],
+        item: 2,
+        expectation: [
+            [2, 3],
+            [3, 2],
+        ]
+    }, {
+        title: "unique elements",
+        input: [1, 2, 3],
+        item: 4,
+        expectation: [
+            [4, 1, 2, 3],
+            [1, 4, 2, 3],
+            [1, 2, 4, 3],
+            [1, 2, 3, 4]
+        ]
+    }, {
+        title: "existing elements",
+        input: [1, 2, 3],
+        item: 3,
+        expectation: [
+            [3, 1, 2, 3],
+            [1, 3, 2, 3],
+            [1, 2, 3, 3]
+        ]
+    }, {
+        title: "same elements",
+        input: [1, 1, 1],
+        item: 1,
+        expectation: [
+            [1, 1, 1, 1]
+        ]
+    }, {
+        title: "repeating elements",
+        input: [1, 2, 1],
+        item: 1,
+        expectation: [
+            [1, 1, 2, 1],
+        ]
+    }];
+
+    for (const sample of samples.filter((s) => typeof (s as any).title !== "undefined")) {
+        it(`should insert new element in every position: ${sample.title}`, () => {
+            const result = [];
+            for (const i of slide(sample.item, sample.input)) {
+                result.push(i);
+            }
+
+            expect(result).to.have.same.deep.members(sample.expectation);
+
+        });
+    }
 });
