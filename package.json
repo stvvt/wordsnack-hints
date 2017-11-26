@@ -5,7 +5,7 @@
   "main": "dist/app.bundle.js",
   "scripts": {
     "start": "ts-node -P . src/index",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha --require ts-node/register --watch-extensions ts \"test/**/*.spec.ts\"",
     "build": "webpack"
   },
   "keywords": [],
