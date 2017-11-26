@@ -1,12 +1,6 @@
 import permutations from "../src/lib/permutations";
 import { slide } from "../src/lib/permutations";
-import { expect } from "chai";
-
-interface ISample {
-    title?: string;
-    expectation: any;
-    [name: string]: any;
-}
+import { expect, withProvider, ISample } from "./setup";
 
 describe("permutations", () => {
     const samples: ISample[] = [{
@@ -60,7 +54,7 @@ describe("permutations", () => {
         ]
     }];
 
-    for (const sample of samples.filter((s) => typeof (s as any).title !== "undefined")) {
+    withProvider(samples, (sample) => {
         it(`should generate all permutations of array elements: ${sample.title}`, () => {
             const result = [];
             for (const p of permutations(sample.input)) {
@@ -69,7 +63,7 @@ describe("permutations", () => {
 
             expect(result).to.have.same.deep.members(sample.expectation);
         });
-    }
+    });
 });
 
 describe("slide", () => {
@@ -116,7 +110,7 @@ describe("slide", () => {
         ]
     }];
 
-    for (const sample of samples.filter((s) => typeof (s as any).title !== "undefined")) {
+    withProvider(samples, (sample) => {
         it(`should insert new element in every position: ${sample.title}`, () => {
             const result = [];
             for (const i of slide(sample.item, sample.input)) {
@@ -126,5 +120,5 @@ describe("slide", () => {
             expect(result).to.have.same.deep.members(sample.expectation);
 
         });
-    }
+    });
 });
