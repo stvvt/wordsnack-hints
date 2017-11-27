@@ -1,4 +1,4 @@
-export default function *chunk<T>(generator: IterableIterator<T>, size: number): IterableIterator<T[]> {
+export default function *buffer<T>(generator: Iterable<T>, size: number): Iterable<T[]> {
     let groupItems = [];
     for (const i of generator) {
         groupItems.push(i);

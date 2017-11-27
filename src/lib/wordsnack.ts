@@ -1,12 +1,12 @@
 import "universal-fetch";
 
 import candidates from "./candidates";
-import chunk from "./chunk";
+import buffer from "./buffer";
 
-function filterRealWords(words: IterableIterator<string>, cb: (word: string | null) => void) {
+function filterRealWords(words: Iterable<string>, cb: (word: string | null) => void) {
     const maxWordsInQuery = 50;
 
-    for (const g of chunk(words, maxWordsInQuery)) {
+    for (const g of buffer(words, maxWordsInQuery)) {
         const search = g.join("|");
         const url = "https://bg.wiktionary.org/w/api.php?origin=*&format=json&action=query&titles="
             + encodeURIComponent(search);
@@ -17,6 +17,9 @@ function filterRealWords(words: IterableIterator<string>, cb: (word: string | nu
                 ["Accept", "application/json"]
             ]
         };
+
+        // tslint:disable-next-line:no-console
+        console.log(`Fetching ${decodeURI(url)} ...`);
 
         fetch(url, fetchOptions)
             .then((response) => response.json())

@@ -15,7 +15,7 @@ export function* slide<T>(item: T, arr: T[]): Iterable<T[]> {
     }
 }
 
-export default function* permutations<T>(arr: T[]): IterableIterator<T[]> {
+export default function* permutations<T>(arr: T[]): Iterable<T[]> {
     if (arr.length <= 1) {
         return yield arr;
     }
