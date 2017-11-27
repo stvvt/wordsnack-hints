@@ -1,4 +1,4 @@
-export function insert<T>(item: T, pos: number, arr: T[]): T[] {
+function insert<T>(item: T, pos: number, arr: T[]): T[] {
     const result = arr.slice();
     result.splice(pos, 0, item);
     return result;
