@@ -6,7 +6,7 @@ interface ICombinationsSample extends ISample {
     n: number;
 }
 
-describe("permutations", () => {
+describe("combinations", () => {
     const samples: ICombinationsSample[] = [{
         title: "empty",
         input: [],
@@ -72,6 +72,13 @@ describe("permutations", () => {
             [1, 2, 3],
             [1, 1, 2],
             [1, 1, 3]
+        ]
+    }, {
+        title: "with string 'пекарна' 7",
+        input: "пекарна".split(""),
+        n: 7,
+        expectation: [
+            "пекарна".split(""),
         ]
     }];
 

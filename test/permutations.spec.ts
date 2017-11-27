@@ -52,6 +52,23 @@ describe("permutations", () => {
             [1, 2, 2, 1],
             [2, 2, 1, 1],
         ]
+    }, {
+        title: "another repeating elements (1)",
+        input: [1, 2, 3, 1],
+        expectation: [
+            [1, 2, 3, 1],
+            [1, 3, 2, 1],
+            [2, 3, 1, 1],
+            [3, 2, 1, 1],
+            [1, 1, 2, 3],
+            [1, 1, 3, 2],
+            [2, 1, 1, 3],
+            [3, 1, 1, 2],
+            [1, 2, 1, 3],
+            [1, 3, 1, 2],
+            [2, 1, 3, 1],
+            [3, 1, 2, 1],
+        ]
     }];
 
     withProvider(samples, (sample) => {
@@ -63,6 +80,22 @@ describe("permutations", () => {
 
             expect(result).to.have.same.deep.members(sample.expectation);
         });
+    });
+
+    it("should be reasonably fast", () => {
+        const input = "пекрнаа";
+        const expectations = [
+            "пекарна",
+            "перкана"
+        ];
+        let foundCount = 0;
+        for (const p of permutations(input.split(""))) {
+            if (expectations.indexOf(p.join("")) >= 0) {
+                foundCount++;
+            }
+        }
+
+        expect(foundCount).to.be.equal(expectations.length);
     });
 });
 

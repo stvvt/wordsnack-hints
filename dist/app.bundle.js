@@ -707,6 +707,22 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var __read = (this && this.__read) || function (o, n) {
+    var m = typeof Symbol === "function" && o[Symbol.iterator];
+    if (!m) return o;
+    var i = m.call(o), r, ar = [], e;
+    try {
+        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
+    }
+    catch (error) { e = { error: error }; }
+    finally {
+        try {
+            if (r && !r.done && (m = i["return"])) m.call(i);
+        }
+        finally { if (e) throw e.error; }
+    }
+    return ar;
+};
 var __values = (this && this.__values) || function (o) {
     var m = typeof Symbol === "function" && o[Symbol.iterator], i = 0;
     if (m) return m.call(o);
@@ -718,49 +734,73 @@ var __values = (this && this.__values) || function (o) {
     };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+function insert(item, pos, arr) {
+    var result = arr.slice();
+    result.splice(pos, 0, item);
+    return result;
+}
+function slide(item, arr) {
+    var seen, i;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                seen = false;
+                i = 0;
+                _a.label = 1;
+            case 1:
+                if (!(i <= arr.length)) return [3 /*break*/, 4];
+                return [4 /*yield*/, insert(item, i, arr)];
+            case 2:
+                _a.sent();
+                if (item === arr[i]) {
+                    return [2 /*return*/];
+                }
+                _a.label = 3;
+            case 3:
+                i++;
+                return [3 /*break*/, 1];
+            case 4: return [2 /*return*/];
+        }
+    });
+}
+exports.slide = slide;
 function permutations(arr) {
-    var _a, _b, p, i, q, e_1_1, e_1, _c;
-    return __generator(this, function (_d) {
-        switch (_d.label) {
+    var _a, first, rest, _b, _c, p, e_1_1, e_1, _d;
+    return __generator(this, function (_e) {
+        switch (_e.label) {
             case 0:
                 if (!(arr.length <= 1)) return [3 /*break*/, 2];
                 return [4 /*yield*/, arr];
-            case 1: return [2 /*return*/, _d.sent()];
+            case 1: return [2 /*return*/, _e.sent()];
             case 2:
-                _d.trys.push([2, 9, 10, 11]);
-                _a = __values(permutations(arr.slice(1))), _b = _a.next();
-                _d.label = 3;
+                _a = __read(arr), first = _a[0], rest = _a.slice(1);
+                _e.label = 3;
             case 3:
-                if (!!_b.done) return [3 /*break*/, 8];
-                p = _b.value;
-                i = 0;
-                _d.label = 4;
+                _e.trys.push([3, 8, 9, 10]);
+                _b = __values(permutations(rest)), _c = _b.next();
+                _e.label = 4;
             case 4:
-                if (!(i < arr.length)) return [3 /*break*/, 7];
-                q = p.slice(0);
-                q.splice(i, 0, arr[0]);
-                return [4 /*yield*/, q];
+                if (!!_c.done) return [3 /*break*/, 7];
+                p = _c.value;
+                return [5 /*yield**/, __values(slide(first, p))];
             case 5:
-                _d.sent();
-                _d.label = 6;
+                _e.sent();
+                _e.label = 6;
             case 6:
-                i++;
+                _c = _b.next();
                 return [3 /*break*/, 4];
-            case 7:
-                _b = _a.next();
-                return [3 /*break*/, 3];
-            case 8: return [3 /*break*/, 11];
-            case 9:
-                e_1_1 = _d.sent();
+            case 7: return [3 /*break*/, 10];
+            case 8:
+                e_1_1 = _e.sent();
                 e_1 = { error: e_1_1 };
-                return [3 /*break*/, 11];
-            case 10:
+                return [3 /*break*/, 10];
+            case 9:
                 try {
-                    if (_b && !_b.done && (_c = _a.return)) _c.call(_a);
+                    if (_c && !_c.done && (_d = _b.return)) _d.call(_b);
                 }
                 finally { if (e_1) throw e_1.error; }
                 return [7 /*endfinally*/];
-            case 11: return [2 /*return*/];
+            case 10: return [2 /*return*/];
         }
     });
 }
@@ -810,49 +850,107 @@ var __values = (this && this.__values) || function (o) {
         }
     };
 };
+var __read = (this && this.__read) || function (o, n) {
+    var m = typeof Symbol === "function" && o[Symbol.iterator];
+    if (!m) return o;
+    var i = m.call(o), r, ar = [], e;
+    try {
+        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
+    }
+    catch (error) { e = { error: error }; }
+    finally {
+        try {
+            if (r && !r.done && (m = i["return"])) m.call(i);
+        }
+        finally { if (e) throw e.error; }
+    }
+    return ar;
+};
+var __spread = (this && this.__spread) || function () {
+    for (var ar = [], i = 0; i < arguments.length; i++) ar = ar.concat(__read(arguments[i]));
+    return ar;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
+function unique(arr) {
+    return arr.reduce(function (acc, item) {
+        acc.set(item, true);
+        return acc;
+    }, new Map()).keys();
+}
 function combinations(arr, n) {
-    var _a, _b, c, e_1_1, e_1, _c;
-    return __generator(this, function (_d) {
-        switch (_d.label) {
+    var _a, _b, item, e_1_1, _c, first, rest, dups, _d, _e, c, e_2_1, e_1, _f, e_2, _g;
+    return __generator(this, function (_h) {
+        switch (_h.label) {
             case 0:
-                if (!(n <= 0)) return [3 /*break*/, 2];
-                return [4 /*yield*/, []];
-            case 1: return [2 /*return*/, _d.sent()];
-            case 2:
-                if (!(arr.length <= n)) return [3 /*break*/, 4];
+                if (!(n >= arr.length || n <= 1)) return [3 /*break*/, 11];
+                if (!(n === arr.length)) return [3 /*break*/, 2];
                 return [4 /*yield*/, arr];
-            case 3: return [2 /*return*/, _d.sent()];
-            case 4: return [5 /*yield**/, __values(combinations(arr.slice(1), n))];
+            case 1:
+                _h.sent();
+                return [3 /*break*/, 10];
+            case 2:
+                if (!(n === 1)) return [3 /*break*/, 10];
+                _h.label = 3;
+            case 3:
+                _h.trys.push([3, 8, 9, 10]);
+                _a = __values(unique(arr)), _b = _a.next();
+                _h.label = 4;
+            case 4:
+                if (!!_b.done) return [3 /*break*/, 7];
+                item = _b.value;
+                return [4 /*yield*/, [item]];
             case 5:
-                _d.sent();
-                _d.label = 6;
+                _h.sent();
+                _h.label = 6;
             case 6:
-                _d.trys.push([6, 11, 12, 13]);
-                _a = __values(combinations(arr.slice(1), n - 1)), _b = _a.next();
-                _d.label = 7;
-            case 7:
-                if (!!_b.done) return [3 /*break*/, 10];
-                c = _b.value;
-                return [4 /*yield*/, [arr[0]].concat(c)];
-            case 8:
-                _d.sent();
-                _d.label = 9;
-            case 9:
                 _b = _a.next();
-                return [3 /*break*/, 7];
-            case 10: return [3 /*break*/, 13];
-            case 11:
-                e_1_1 = _d.sent();
+                return [3 /*break*/, 4];
+            case 7: return [3 /*break*/, 10];
+            case 8:
+                e_1_1 = _h.sent();
                 e_1 = { error: e_1_1 };
-                return [3 /*break*/, 13];
-            case 12:
+                return [3 /*break*/, 10];
+            case 9:
                 try {
-                    if (_b && !_b.done && (_c = _a.return)) _c.call(_a);
+                    if (_b && !_b.done && (_f = _a.return)) _f.call(_a);
                 }
                 finally { if (e_1) throw e_1.error; }
                 return [7 /*endfinally*/];
-            case 13: return [2 /*return*/];
+            case 10: return [2 /*return*/];
+            case 11:
+                _c = __read(arr), first = _c[0], rest = _c.slice(1);
+                return [5 /*yield**/, __values(combinations(rest, n))];
+            case 12:
+                _h.sent();
+                dups = rest.indexOf(first) >= 0;
+                _h.label = 13;
+            case 13:
+                _h.trys.push([13, 18, 19, 20]);
+                _d = __values(combinations(rest, n - 1)), _e = _d.next();
+                _h.label = 14;
+            case 14:
+                if (!!_e.done) return [3 /*break*/, 17];
+                c = _e.value;
+                if (!(!dups || c.indexOf(first) >= 0)) return [3 /*break*/, 16];
+                return [4 /*yield*/, __spread([first], c)];
+            case 15:
+                _h.sent();
+                _h.label = 16;
+            case 16:
+                _e = _d.next();
+                return [3 /*break*/, 14];
+            case 17: return [3 /*break*/, 20];
+            case 18:
+                e_2_1 = _h.sent();
+                e_2 = { error: e_2_1 };
+                return [3 /*break*/, 20];
+            case 19:
+                try {
+                    if (_e && !_e.done && (_g = _d.return)) _g.call(_d);
+                }
+                finally { if (e_2) throw e_2.error; }
+                return [7 /*endfinally*/];
+            case 20: return [2 /*return*/];
         }
     });
 }

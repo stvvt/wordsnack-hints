@@ -15,14 +15,14 @@ export function* slide<T>(item: T, arr: T[]): Iterable<T[]> {
     }
 }
 
-export default function* permutations<T>(arr: T[], depth = 0): IterableIterator<T[]> {
+export default function* permutations<T>(arr: T[]): IterableIterator<T[]> {
     if (arr.length <= 1) {
         return yield arr;
     }
 
     const [first, ...rest] = arr;
 
-    for (const p of permutations(rest, depth + 1)) {
+    for (const p of permutations(rest)) {
         yield *slide(first, p);
     }
 }
