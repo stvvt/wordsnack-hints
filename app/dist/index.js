@@ -1,5 +1,139 @@
-var wordsnack =
 /******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(1);
+
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var wordsnack_hints_1 = __webpack_require__(2);
+(function () {
+    var dom = {
+        loading: document.querySelector("div#loading"),
+        letters: document.querySelector("input[name=letters]"),
+        wordLength: document.querySelector("input[name=wordLength]"),
+        results: document.querySelector("ol#hints"),
+        button: document.querySelector("button#hints")
+    };
+    if (dom.loading == null || dom.letters == null || dom.wordLength == null || dom.results == null) {
+        throw new Error("Invalid DOM");
+    }
+    function setLoading(state) {
+        if (state) {
+            clearHints();
+        }
+        dom.loading.style.visibility = state ? "" : "none";
+    }
+    function clearHints() {
+        while (dom.results.lastChild) {
+            dom.results.removeChild(dom.results.lastChild);
+        }
+    }
+    function addHint(word) {
+        var li = document.createElement("li");
+        li.innerText = word;
+        dom.results.appendChild(li);
+    }
+    dom.button.addEventListener("click", function () {
+        clearHints();
+        setLoading(true);
+        wordsnack_hints_1.hints(dom.letters.value, +dom.wordLength.value, function (word) {
+            setLoading(false);
+            if (word === null) {
+                return;
+            }
+            addHint(word);
+        });
+    });
+})();
+
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(true)
+		module.exports = factory();
+	else if(typeof define === 'function' && define.amd)
+		define([], factory);
+	else if(typeof exports === 'object')
+		exports["wordsnack"] = factory();
+	else
+		root["wordsnack"] = factory();
+})(this, function() {
+return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 /******/
@@ -90,11 +224,11 @@ var __values = (this && this.__values) || function (o) {
 Object.defineProperty(exports, "__esModule", { value: true });
 __webpack_require__(2);
 var candidates_1 = __webpack_require__(4);
-var chunk_1 = __webpack_require__(8);
+var buffer_1 = __webpack_require__(8);
 function filterRealWords(words, cb) {
     var maxWordsInQuery = 50;
     try {
-        for (var _a = __values(chunk_1.default(words, maxWordsInQuery)), _b = _a.next(); !_b.done; _b = _a.next()) {
+        for (var _a = __values(buffer_1.default(words, maxWordsInQuery)), _b = _a.next(); !_b.done; _b = _a.next()) {
             var g = _b.value;
             var search = g.join("|");
             var url = "https://bg.wiktionary.org/w/api.php?origin=*&format=json&action=query&titles="
@@ -106,6 +240,8 @@ function filterRealWords(words, cb) {
                     ["Accept", "application/json"]
                 ]
             };
+            // tslint:disable-next-line:no-console
+            console.log("Fetching " + decodeURI(url) + " ...");
             fetch(url, fetchOptions)
                 .then(function (response) { return response.json(); })
                 .then(function (json) {
@@ -1058,7 +1194,7 @@ var __values = (this && this.__values) || function (o) {
     };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-function chunk(generator, size) {
+function buffer(generator, size) {
     var groupItems, generator_1, generator_1_1, i, e_1_1, e_1, _a;
     return __generator(this, function (_b) {
         switch (_b.label) {
@@ -1103,8 +1239,12 @@ function chunk(generator, size) {
         }
     });
 }
-exports.default = chunk;
+exports.default = buffer;
 
+
+/***/ })
+/******/ ]);
+});
 
 /***/ })
 /******/ ]);
