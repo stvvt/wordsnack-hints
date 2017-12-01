@@ -9,7 +9,7 @@ function isVowel(ch: string) {
     return vowels.indexOf(ch) >= 0;
 }
 
-export default function(str: string[]): boolean {
+export default function(str: string | string[]): boolean {
     let v = 0;
     let c = 0;
 
