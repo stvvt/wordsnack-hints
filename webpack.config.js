@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
     target: "web",
-    entry: ['./src/index.ts', ],
+    entry: ['./src/index.ts',],
     resolve: {
         extensions: [".ts", ".js"]
     },
@@ -16,5 +16,6 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         publicPath: "/dist/",
         filename: 'app.bundle.js'
-    }
+    },
+    plugins: []
 };

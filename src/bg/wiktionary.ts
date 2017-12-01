@@ -31,6 +31,5 @@ export function filter(words: Observable<string>): Observable<string> {
                     .map((page) => page.title)
             );
         })
-        .do(console.log)
     ;
 }
