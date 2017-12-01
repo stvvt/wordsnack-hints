@@ -77,7 +77,7 @@ module.exports = __webpack_require__(1);
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var wordsnack_hints_1 = __webpack_require__(2);
+var wordsnack_1 = __webpack_require__(2);
 (function () {
     var dom = {
         loading: document.querySelector("div#loading"),
@@ -108,7 +108,7 @@ var wordsnack_hints_1 = __webpack_require__(2);
     dom.button.addEventListener("click", function () {
         clearHints();
         setLoading(true);
-        wordsnack_hints_1.hints(dom.letters.value, +dom.wordLength.value, function (word) {
+        wordsnack_1.hints(dom.letters.value, +dom.wordLength.value, function (word) {
             setLoading(false);
             if (word === null) {
                 return;
@@ -123,94 +123,35 @@ var wordsnack_hints_1 = __webpack_require__(2);
 /* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
-(function webpackUniversalModuleDefinition(root, factory) {
-	if(true)
-		module.exports = factory();
-	else if(typeof define === 'function' && define.amd)
-		define([], factory);
-	else if(typeof exports === 'object')
-		exports["wordsnack"] = factory();
-	else
-		root["wordsnack"] = factory();
-})(this, function() {
-return /******/ (function(modules) { // webpackBootstrap
-/******/ 	// The module cache
-/******/ 	var installedModules = {};
-/******/
-/******/ 	// The require function
-/******/ 	function __webpack_require__(moduleId) {
-/******/
-/******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId]) {
-/******/ 			return installedModules[moduleId].exports;
-/******/ 		}
-/******/ 		// Create a new module (and put it into the cache)
-/******/ 		var module = installedModules[moduleId] = {
-/******/ 			i: moduleId,
-/******/ 			l: false,
-/******/ 			exports: {}
-/******/ 		};
-/******/
-/******/ 		// Execute the module function
-/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-/******/
-/******/ 		// Flag the module as loaded
-/******/ 		module.l = true;
-/******/
-/******/ 		// Return the exports of the module
-/******/ 		return module.exports;
-/******/ 	}
-/******/
-/******/
-/******/ 	// expose the modules object (__webpack_modules__)
-/******/ 	__webpack_require__.m = modules;
-/******/
-/******/ 	// expose the module cache
-/******/ 	__webpack_require__.c = installedModules;
-/******/
-/******/ 	// define getter function for harmony exports
-/******/ 	__webpack_require__.d = function(exports, name, getter) {
-/******/ 		if(!__webpack_require__.o(exports, name)) {
-/******/ 			Object.defineProperty(exports, name, {
-/******/ 				configurable: false,
-/******/ 				enumerable: true,
-/******/ 				get: getter
-/******/ 			});
-/******/ 		}
-/******/ 	};
-/******/
-/******/ 	// getDefaultExport function for compatibility with non-harmony modules
-/******/ 	__webpack_require__.n = function(module) {
-/******/ 		var getter = module && module.__esModule ?
-/******/ 			function getDefault() { return module['default']; } :
-/******/ 			function getModuleExports() { return module; };
-/******/ 		__webpack_require__.d(getter, 'a', getter);
-/******/ 		return getter;
-/******/ 	};
-/******/
-/******/ 	// Object.prototype.hasOwnProperty.call
-/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
-/******/
-/******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
-/******/
-/******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
-/******/ })
-/************************************************************************/
-/******/ ([
-/* 0 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(1);
-
-
-/***/ }),
-/* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
 "use strict";
 
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
 var __values = (this && this.__values) || function (o) {
     var m = typeof Symbol === "function" && o[Symbol.iterator], i = 0;
     if (m) return m.call(o);
@@ -222,9 +163,66 @@ var __values = (this && this.__values) || function (o) {
     };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-__webpack_require__(2);
-var candidates_1 = __webpack_require__(4);
+__webpack_require__(3);
+var rx_combinatorics_1 = __webpack_require__(5);
 var buffer_1 = __webpack_require__(8);
+var sounds_1 = __webpack_require__(9);
+function candidates(letters, wordlength) {
+    var _a, _b, c, _c, _d, p, e_1_1, e_2_1, e_2, _e, e_1, _f;
+    return __generator(this, function (_g) {
+        switch (_g.label) {
+            case 0:
+                _g.trys.push([0, 11, 12, 13]);
+                _a = __values(rx_combinatorics_1.combinations(letters.split(""), wordlength)), _b = _a.next();
+                _g.label = 1;
+            case 1:
+                if (!!_b.done) return [3 /*break*/, 10];
+                c = _b.value;
+                _g.label = 2;
+            case 2:
+                _g.trys.push([2, 7, 8, 9]);
+                _c = __values(rx_combinatorics_1.permutations(c)), _d = _c.next();
+                _g.label = 3;
+            case 3:
+                if (!!_d.done) return [3 /*break*/, 6];
+                p = _d.value;
+                if (!sounds_1.default(p)) return [3 /*break*/, 5];
+                return [4 /*yield*/, p.join("")];
+            case 4:
+                _g.sent();
+                _g.label = 5;
+            case 5:
+                _d = _c.next();
+                return [3 /*break*/, 3];
+            case 6: return [3 /*break*/, 9];
+            case 7:
+                e_1_1 = _g.sent();
+                e_1 = { error: e_1_1 };
+                return [3 /*break*/, 9];
+            case 8:
+                try {
+                    if (_d && !_d.done && (_f = _c.return)) _f.call(_c);
+                }
+                finally { if (e_1) throw e_1.error; }
+                return [7 /*endfinally*/];
+            case 9:
+                _b = _a.next();
+                return [3 /*break*/, 1];
+            case 10: return [3 /*break*/, 13];
+            case 11:
+                e_2_1 = _g.sent();
+                e_2 = { error: e_2_1 };
+                return [3 /*break*/, 13];
+            case 12:
+                try {
+                    if (_b && !_b.done && (_e = _a.return)) _e.call(_a);
+                }
+                finally { if (e_2) throw e_2.error; }
+                return [7 /*endfinally*/];
+            case 13: return [2 /*return*/];
+        }
+    });
+}
 function filterRealWords(words, cb) {
     var maxWordsInQuery = 50;
     try {
@@ -253,35 +251,35 @@ function filterRealWords(words, cb) {
             });
         }
     }
-    catch (e_1_1) { e_1 = { error: e_1_1 }; }
+    catch (e_3_1) { e_3 = { error: e_3_1 }; }
     finally {
         try {
             if (_b && !_b.done && (_c = _a.return)) _c.call(_a);
         }
-        finally { if (e_1) throw e_1.error; }
+        finally { if (e_3) throw e_3.error; }
     }
-    var e_1, _c;
+    var e_3, _c;
 }
 function hints(letters, wordlength, callback) {
-    filterRealWords(candidates_1.default(letters, wordlength), callback);
+    filterRealWords(candidates(letters, wordlength), callback);
 }
 exports.hints = hints;
 
 
 /***/ }),
-/* 2 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // the fetch-polyfill polyfill installs the fetch() function with IE8 Support
 // on the global object (window or self)
 //
 // Return that as the export for use in Webpack, Browserify etc.
-__webpack_require__(3);
+__webpack_require__(4);
 module.exports = self.fetch.bind(self);
 
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports) {
 
 (function(self) {
@@ -705,242 +703,18 @@ module.exports = self.fetch.bind(self);
 
 
 /***/ }),
-/* 4 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [0, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-var __values = (this && this.__values) || function (o) {
-    var m = typeof Symbol === "function" && o[Symbol.iterator], i = 0;
-    if (m) return m.call(o);
-    return {
-        next: function () {
-            if (o && i >= o.length) o = void 0;
-            return { value: o && o[i++], done: !o };
-        }
-    };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var permutations_1 = __webpack_require__(5);
-var combinations_1 = __webpack_require__(6);
-var sounds_1 = __webpack_require__(7);
-function candidates(letters, wordlength) {
-    var _a, _b, c, _c, _d, p, e_1_1, e_2_1, e_2, _e, e_1, _f;
-    return __generator(this, function (_g) {
-        switch (_g.label) {
-            case 0:
-                _g.trys.push([0, 11, 12, 13]);
-                _a = __values(combinations_1.default(letters.split(""), wordlength)), _b = _a.next();
-                _g.label = 1;
-            case 1:
-                if (!!_b.done) return [3 /*break*/, 10];
-                c = _b.value;
-                _g.label = 2;
-            case 2:
-                _g.trys.push([2, 7, 8, 9]);
-                _c = __values(permutations_1.default(c)), _d = _c.next();
-                _g.label = 3;
-            case 3:
-                if (!!_d.done) return [3 /*break*/, 6];
-                p = _d.value;
-                if (!sounds_1.default(p)) return [3 /*break*/, 5];
-                return [4 /*yield*/, p.join("")];
-            case 4:
-                _g.sent();
-                _g.label = 5;
-            case 5:
-                _d = _c.next();
-                return [3 /*break*/, 3];
-            case 6: return [3 /*break*/, 9];
-            case 7:
-                e_1_1 = _g.sent();
-                e_1 = { error: e_1_1 };
-                return [3 /*break*/, 9];
-            case 8:
-                try {
-                    if (_d && !_d.done && (_f = _c.return)) _f.call(_c);
-                }
-                finally { if (e_1) throw e_1.error; }
-                return [7 /*endfinally*/];
-            case 9:
-                _b = _a.next();
-                return [3 /*break*/, 1];
-            case 10: return [3 /*break*/, 13];
-            case 11:
-                e_2_1 = _g.sent();
-                e_2 = { error: e_2_1 };
-                return [3 /*break*/, 13];
-            case 12:
-                try {
-                    if (_b && !_b.done && (_e = _a.return)) _e.call(_a);
-                }
-                finally { if (e_2) throw e_2.error; }
-                return [7 /*endfinally*/];
-            case 13: return [2 /*return*/];
-        }
-    });
-}
-exports.default = candidates;
-
-
-/***/ }),
 /* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [0, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-var __read = (this && this.__read) || function (o, n) {
-    var m = typeof Symbol === "function" && o[Symbol.iterator];
-    if (!m) return o;
-    var i = m.call(o), r, ar = [], e;
-    try {
-        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
-    }
-    catch (error) { e = { error: error }; }
-    finally {
-        try {
-            if (r && !r.done && (m = i["return"])) m.call(i);
-        }
-        finally { if (e) throw e.error; }
-    }
-    return ar;
-};
-var __values = (this && this.__values) || function (o) {
-    var m = typeof Symbol === "function" && o[Symbol.iterator], i = 0;
-    if (m) return m.call(o);
-    return {
-        next: function () {
-            if (o && i >= o.length) o = void 0;
-            return { value: o && o[i++], done: !o };
-        }
-    };
-};
+
+console.log('xxxx');
 Object.defineProperty(exports, "__esModule", { value: true });
-function insert(item, pos, arr) {
-    var result = arr.slice();
-    result.splice(pos, 0, item);
-    return result;
-}
-function slide(item, arr) {
-    var seen, i;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0:
-                seen = false;
-                i = 0;
-                _a.label = 1;
-            case 1:
-                if (!(i <= arr.length)) return [3 /*break*/, 4];
-                return [4 /*yield*/, insert(item, i, arr)];
-            case 2:
-                _a.sent();
-                if (item === arr[i]) {
-                    return [2 /*return*/];
-                }
-                _a.label = 3;
-            case 3:
-                i++;
-                return [3 /*break*/, 1];
-            case 4: return [2 /*return*/];
-        }
-    });
-}
-exports.slide = slide;
-function permutations(arr) {
-    var _a, first, rest, _b, _c, p, e_1_1, e_1, _d;
-    return __generator(this, function (_e) {
-        switch (_e.label) {
-            case 0:
-                if (!(arr.length <= 1)) return [3 /*break*/, 2];
-                return [4 /*yield*/, arr];
-            case 1: return [2 /*return*/, _e.sent()];
-            case 2:
-                _a = __read(arr), first = _a[0], rest = _a.slice(1);
-                _e.label = 3;
-            case 3:
-                _e.trys.push([3, 8, 9, 10]);
-                _b = __values(permutations(rest)), _c = _b.next();
-                _e.label = 4;
-            case 4:
-                if (!!_c.done) return [3 /*break*/, 7];
-                p = _c.value;
-                return [5 /*yield**/, __values(slide(first, p))];
-            case 5:
-                _e.sent();
-                _e.label = 6;
-            case 6:
-                _c = _b.next();
-                return [3 /*break*/, 4];
-            case 7: return [3 /*break*/, 10];
-            case 8:
-                e_1_1 = _e.sent();
-                e_1 = { error: e_1_1 };
-                return [3 /*break*/, 10];
-            case 9:
-                try {
-                    if (_c && !_c.done && (_d = _b.return)) _d.call(_b);
-                }
-                finally { if (e_1) throw e_1.error; }
-                return [7 /*endfinally*/];
-            case 10: return [2 /*return*/];
-        }
-    });
-}
-exports.default = permutations;
+var combinations_1 = __webpack_require__(6);
+exports.combinations = combinations_1.combinations;
+var permutations_1 = __webpack_require__(7);
+exports.permutations = permutations_1.permutations;
 
 
 /***/ }),
@@ -1090,7 +864,7 @@ function combinations(arr, n) {
         }
     });
 }
-exports.default = combinations;
+exports.combinations = combinations;
 
 
 /***/ }),
@@ -1099,6 +873,49 @@ exports.default = combinations;
 
 "use strict";
 
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+var __read = (this && this.__read) || function (o, n) {
+    var m = typeof Symbol === "function" && o[Symbol.iterator];
+    if (!m) return o;
+    var i = m.call(o), r, ar = [], e;
+    try {
+        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
+    }
+    catch (error) { e = { error: error }; }
+    finally {
+        try {
+            if (r && !r.done && (m = i["return"])) m.call(i);
+        }
+        finally { if (e) throw e.error; }
+    }
+    return ar;
+};
 var __values = (this && this.__values) || function (o) {
     var m = typeof Symbol === "function" && o[Symbol.iterator], i = 0;
     if (m) return m.call(o);
@@ -1110,44 +927,77 @@ var __values = (this && this.__values) || function (o) {
     };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var vowels = "аеиоуюя";
-var cosonants = "бвгджзйклмнпрстфхцчшщъь";
-function isCosonant(ch) {
-    return cosonants.indexOf(ch) >= 0;
+function insert(item, pos, arr) {
+    var result = arr.slice();
+    result.splice(pos, 0, item);
+    return result;
 }
-function isVowel(ch) {
-    return vowels.indexOf(ch) >= 0;
-}
-function default_1(str) {
-    var v = 0;
-    var c = 0;
-    try {
-        for (var str_1 = __values(str), str_1_1 = str_1.next(); !str_1_1.done; str_1_1 = str_1.next()) {
-            var ch = str_1_1.value;
-            if (isVowel(ch)) {
-                v++;
-                c = 0;
-            }
-            else if (isCosonant(ch)) {
-                c++;
-                v = 0;
-            }
-            if (v > 2 || c > 3) {
-                return false;
-            }
+function slide(item, arr) {
+    var seen, i;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                seen = false;
+                i = 0;
+                _a.label = 1;
+            case 1:
+                if (!(i <= arr.length)) return [3 /*break*/, 4];
+                return [4 /*yield*/, insert(item, i, arr)];
+            case 2:
+                _a.sent();
+                if (item === arr[i]) {
+                    return [2 /*return*/];
+                }
+                _a.label = 3;
+            case 3:
+                i++;
+                return [3 /*break*/, 1];
+            case 4: return [2 /*return*/];
         }
-    }
-    catch (e_1_1) { e_1 = { error: e_1_1 }; }
-    finally {
-        try {
-            if (str_1_1 && !str_1_1.done && (_a = str_1.return)) _a.call(str_1);
-        }
-        finally { if (e_1) throw e_1.error; }
-    }
-    return true;
-    var e_1, _a;
+    });
 }
-exports.default = default_1;
+exports.slide = slide;
+function permutations(arr) {
+    var _a, first, rest, _b, _c, p, e_1_1, e_1, _d;
+    return __generator(this, function (_e) {
+        switch (_e.label) {
+            case 0:
+                if (!(arr.length <= 1)) return [3 /*break*/, 2];
+                return [4 /*yield*/, arr];
+            case 1: return [2 /*return*/, _e.sent()];
+            case 2:
+                _a = __read(arr), first = _a[0], rest = _a.slice(1);
+                _e.label = 3;
+            case 3:
+                _e.trys.push([3, 8, 9, 10]);
+                _b = __values(permutations(rest)), _c = _b.next();
+                _e.label = 4;
+            case 4:
+                if (!!_c.done) return [3 /*break*/, 7];
+                p = _c.value;
+                return [5 /*yield**/, __values(slide(first, p))];
+            case 5:
+                _e.sent();
+                _e.label = 6;
+            case 6:
+                _c = _b.next();
+                return [3 /*break*/, 4];
+            case 7: return [3 /*break*/, 10];
+            case 8:
+                e_1_1 = _e.sent();
+                e_1 = { error: e_1_1 };
+                return [3 /*break*/, 10];
+            case 9:
+                try {
+                    if (_c && !_c.done && (_d = _b.return)) _d.call(_b);
+                }
+                finally { if (e_1) throw e_1.error; }
+                return [7 /*endfinally*/];
+            case 10: return [2 /*return*/];
+        }
+    });
+}
+exports.permutations = permutations;
 
 
 /***/ }),
@@ -1242,9 +1092,62 @@ function buffer(generator, size) {
 exports.default = buffer;
 
 
-/***/ })
-/******/ ]);
-});
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __values = (this && this.__values) || function (o) {
+    var m = typeof Symbol === "function" && o[Symbol.iterator], i = 0;
+    if (m) return m.call(o);
+    return {
+        next: function () {
+            if (o && i >= o.length) o = void 0;
+            return { value: o && o[i++], done: !o };
+        }
+    };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var vowels = "аеиоуюя";
+var cosonants = "бвгджзйклмнпрстфхцчшщъь";
+function isCosonant(ch) {
+    return cosonants.indexOf(ch) >= 0;
+}
+function isVowel(ch) {
+    return vowels.indexOf(ch) >= 0;
+}
+function default_1(str) {
+    var v = 0;
+    var c = 0;
+    try {
+        for (var str_1 = __values(str), str_1_1 = str_1.next(); !str_1_1.done; str_1_1 = str_1.next()) {
+            var ch = str_1_1.value;
+            if (isVowel(ch)) {
+                v++;
+                c = 0;
+            }
+            else if (isCosonant(ch)) {
+                c++;
+                v = 0;
+            }
+            if (v > 2 || c > 3) {
+                return false;
+            }
+        }
+    }
+    catch (e_1_1) { e_1 = { error: e_1_1 }; }
+    finally {
+        try {
+            if (str_1_1 && !str_1_1.done && (_a = str_1.return)) _a.call(str_1);
+        }
+        finally { if (e_1) throw e_1.error; }
+    }
+    return true;
+    var e_1, _a;
+}
+exports.default = default_1;
+
 
 /***/ })
 /******/ ]);

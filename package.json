@@ -3,9 +3,7 @@
   "version": "1.0.1",
   "description": "",
   "main": "dist/wordsnack-hints.js",
-  "types": "dist/wordsnack-hints.d.ts",
   "scripts": {
-    "start": "ts-node -P . src/index",
     "test": "mocha --require ts-node/register --watch-extensions ts \"test/**/*.spec.ts\"",
     "build": "webpack"
   },

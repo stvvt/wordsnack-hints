@@ -1,7 +1,18 @@
 import "universal-fetch";
+import { permutations, combinations } from "rx-combinatorics";
 
-import candidates from "./candidates";
 import buffer from "./buffer";
+import eligible from "./bg/sounds";
+
+function* candidates(letters: string, wordlength: number): Iterable<string> {
+    for (const c of combinations(letters.split(""), wordlength)) {
+        for (const p of permutations(c)) {
+            if (eligible(p)) {
+                yield p.join("");
+            }
+        }
+    }
+}
 
 function filterRealWords(words: Iterable<string>, cb: (word: string | null) => void) {
     const maxWordsInQuery = 50;

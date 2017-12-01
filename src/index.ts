@@ -1,4 +1,4 @@
-import { hints } from "wordsnack-hints";
+import { hints } from "./wordsnack";
 
 (() => {
     const dom = {

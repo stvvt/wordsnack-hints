@@ -2,9 +2,9 @@ const path = require('path');
 
 module.exports = {
     target: "web",
-    entry: ['./src/lib/wordsnack.ts', ],
+    entry: ['./src/index.ts', ],
     resolve: {
-        extensions: [".ts"]
+        extensions: [".ts", ".js"]
     },
     module: {
         loaders: [
@@ -14,8 +14,6 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'wordsnack-hints.js',
-        library: 'wordsnack',
-        libraryTarget: 'umd'
+        filename: 'app.bundle.js'
     }
 };
