@@ -24,45 +24,11 @@
     </div>
 
     <h3>Hints</h3>
+    <div id="loading" style="display: none;">Loading ...</div>
     <ol id="hints">
     </ol>
 </body>
 
 <script src="dist/app.bundle.js"></script>
-<script>
-    var letters = document.querySelector('input[name=letters]');
-    var wordLength = document.querySelector('input[name=wordLength]');
-    var results = document.querySelector('ol#hints');
-    var loading = document.createElement('span');
-    var isLoading = false;
-    loading.innerHTML = 'Loading ...';
-
-    function setLoading(state) {
-        if (isLoading ^ state) {
-            if (state) {
-                while (results.lastChild) {
-                    results.removeChild(results.lastChild);
-                }
-                results.appendChild(loading);
-            } else {
-                results.removeChild(loading);
-            }
-            isLoading = state;
-        }
-    }
-
-    document.querySelector('button#hints').addEventListener('click', function () {
-        setLoading(true);
-        wordsnack.hints(letters.value, wordLength.value, function (word) {
-            setLoading(false);
-            if (word === null) {
-                return;
-            }
-            var li = document.createElement('li');
-            li.innerText = word;
-            results.appendChild(li);
-        });
-    })
-</script>
 
 </html>

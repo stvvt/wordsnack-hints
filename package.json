@@ -1,19 +1,23 @@
 {
-  "name": "wordsnack",
-  "version": "1.0.1",
+  "name": "wordsnack-hints",
+  "version": "1.1.0",
   "description": "",
   "main": "dist/app.bundle.js",
+  "typings": "typings",
   "scripts": {
-    "start": "ts-node -P . src/index",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack"
+    "start": "npm run watch && livereload",
+    "test": "mocha --require ts-node/register --watch-extensions ts \"test/**/*.spec.ts\"",
+    "build": "webpack --config webpack.config.build.js",
+    "serve": "webpack-dev-server"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "es6-promise": "^4.1.1",
-    "universal-fetch": "^1.0.0"
+    "rx-combinatorics": "github:stvvt/rx-combinatorics#1.1.0",
+    "rxjs": "^5.5.2",
+    "rxjs-fetch": "^2.1.6"
   },
   "devDependencies": {
     "@types/chai": "^4.0.5",
@@ -24,6 +28,8 @@
     "ts-node": "^3.3.0",
     "tslint": "^5.8.0",
     "typescript": "^2.6.1",
-    "webpack": "^3.8.1"
+    "uglifyjs-webpack-plugin": "^1.1.2",
+    "webpack": "^3.8.1",
+    "webpack-dev-server": "^2.9.5"
   }
 }

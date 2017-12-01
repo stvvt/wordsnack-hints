@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 const vowels = "аеиоуюя";
 const cosonants = "бвгджзйклмнпрстфхцчшщъь";
 
@@ -9,7 +10,7 @@ function isVowel(ch: string) {
     return vowels.indexOf(ch) >= 0;
 }
 
-export default function(str: string[]): boolean {
+function isEligible(str: string | string[]): boolean {
     let v = 0;
     let c = 0;
 
@@ -28,4 +29,8 @@ export default function(str: string[]): boolean {
     }
 
     return true;
+}
+
+export function filter(words: Observable<string>): Observable<string> {
+    return words.filter(isEligible);
 }
