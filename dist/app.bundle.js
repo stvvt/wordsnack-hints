@@ -708,8 +708,6 @@ module.exports = self.fetch.bind(self);
 
 "use strict";
 
-
-console.log('xxxx');
 Object.defineProperty(exports, "__esModule", { value: true });
 var combinations_1 = __webpack_require__(6);
 exports.combinations = combinations_1.combinations;

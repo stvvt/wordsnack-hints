@@ -2,10 +2,12 @@
   "name": "wordsnack-hints",
   "version": "1.0.1",
   "description": "",
-  "main": "dist/wordsnack-hints.js",
+  "main": "dist/app.bundle.js",
   "scripts": {
+    "start": "npm run watch && livereload",
     "test": "mocha --require ts-node/register --watch-extensions ts \"test/**/*.spec.ts\"",
-    "build": "webpack"
+    "build": "webpack",
+    "serve": "webpack-dev-server"
   },
   "keywords": [],
   "author": "",
@@ -23,6 +25,7 @@
     "ts-node": "^3.3.0",
     "tslint": "^5.8.0",
     "typescript": "^2.6.1",
-    "webpack": "^3.8.1"
+    "webpack": "^3.8.1",
+    "webpack-dev-server": "^2.9.5"
   }
 }
