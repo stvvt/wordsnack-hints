@@ -10,7 +10,6 @@ const dom = {
     button: document.querySelector("button#hints")
 };
 const filters = [eligibleFilter, wiktionaryFilter];
-const words = hints(dom.letters!.value, +dom.wordLength!.value, filters);
 
 if (dom.loading == null || dom.letters == null || dom.wordLength == null || dom.results == null) {
     throw new Error("Invalid DOM");
@@ -36,6 +35,8 @@ function addHint(word: string): void {
 }
 
 dom.button!.addEventListener("click", () => {
+    const words = hints(dom.letters!.value, +dom.wordLength!.value, filters);
+
     clearHints();
     setLoading(true);
     words.subscribe({
