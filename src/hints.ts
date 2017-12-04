@@ -3,14 +3,14 @@ import "rxjs/add/observable/of";
 import "rxjs/add/operator/mergeMap";
 import "rxjs/add/operator/map";
 
-import { rxCombinations, rxPermutations } from "rx-combinatorics";
+import { combinations$, permutations$ } from "rx-combinatorics";
 
 type IFilter = (words: Observable<string>) => Observable<string>;
 
 export function hints(letters: string, wordlength: number, filters: IFilter[] = []): Observable<string> {
     let o = Observable.of(letters.split(""))
-        .mergeMap((i) => rxCombinations(i, wordlength))
-        .mergeMap(rxPermutations)
+        .mergeMap((i) => combinations$(i, wordlength))
+        .mergeMap(permutations$)
         .map((word) => word.join(""))
     ;
 
