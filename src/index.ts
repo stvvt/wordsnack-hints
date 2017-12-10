@@ -6,8 +6,9 @@ const dom = {
     loading: document.querySelector<HTMLElement>("div#loading"),
     letters: document.querySelector<HTMLInputElement>("input[name=letters]"),
     wordLength: document.querySelector<HTMLInputElement>("input[name=wordLength]"),
-    results: document.querySelector("ol#hints"),
-    button: document.querySelector("button#hints")
+    results: document.querySelector<HTMLOListElement>("ol#hints"),
+    button: document.querySelector<HTMLButtonElement>("button#hints"),
+    countTotal: document.querySelector<HTMLSpanElement>("span#count-total")
 };
 const filters = [eligibleFilter, wiktionaryFilter];
 
@@ -35,10 +36,14 @@ function addHint(word: string): void {
 }
 
 dom.button!.addEventListener("click", () => {
-    const words = hints(dom.letters!.value, +dom.wordLength!.value, filters);
+    const letters = dom.letters!.value;
+    const wordLength = +dom.wordLength!.value;
+    const words = hints(letters, wordLength, filters);
 
     clearHints();
     setLoading(true);
+
+    dom.countTotal!.innerText = "5";
     words.subscribe({
         next: addHint,
         complete: () => setLoading(false)
