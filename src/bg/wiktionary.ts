@@ -1,4 +1,5 @@
 import { Observable } from "rxjs/Observable";
+import "rxjs/add/observable/from";
 import "rxjs/add/operator/mergeMap";
 import "rxjs/add/operator/filter";
 import "rxjs/add/operator/bufferCount";
