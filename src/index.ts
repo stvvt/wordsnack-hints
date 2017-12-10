@@ -1,4 +1,4 @@
-import { hints } from "./hints";
+import { hints } from './hints';
 import { filter as eligibleFilter } from "./bg/sounds";
 import { filter as wiktionaryFilter } from "./bg/wiktionary";
 
@@ -8,7 +8,8 @@ const dom = {
     wordLength: document.querySelector<HTMLInputElement>("input[name=wordLength]"),
     results: document.querySelector<HTMLOListElement>("ol#hints"),
     button: document.querySelector<HTMLButtonElement>("button#hints"),
-    countTotal: document.querySelector<HTMLSpanElement>("span#count-total")
+    count: document.querySelector<HTMLElement>("#count"),
+    countTotal: document.querySelector<HTMLElement>("#count-total")
 };
 const filters = [eligibleFilter, wiktionaryFilter];
 
@@ -33,7 +34,18 @@ function addHint(word: string): void {
     const li = document.createElement("li");
     li.innerText = word;
     dom.results!.appendChild(li);
+    setCount(++hintsCount);
 }
+
+function setCount(count: number): void {
+    dom.count!.innerHTML = count.toString();
+}
+
+function setTotalCount(count: number): void {
+    dom.countTotal!.innerHTML = count.toString();
+}
+
+let hintsCount = 0;
 
 dom.button!.addEventListener("click", () => {
     const letters = dom.letters!.value;
@@ -43,7 +55,8 @@ dom.button!.addEventListener("click", () => {
     clearHints();
     setLoading(true);
 
-    dom.countTotal!.innerText = "5";
+    setTotalCount(hints.count(letters, wordLength));
+
     words.subscribe({
         next: addHint,
         complete: () => setLoading(false)

@@ -29,5 +29,5 @@ export const hints = hintsFn as IHints;
 hints.count = (letters: string, wordlength: number) => {
     const arr = letters.split("");
 
-    return combinations.count(arr, wordlength);
+    return combinations.count(arr, wordlength, true);
 };
