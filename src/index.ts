@@ -1,4 +1,4 @@
-import { hints } from './hints';
+import { hints } from "./hints";
 import { filter as eligibleFilter } from "./bg/sounds";
 import { filter as wiktionaryFilter } from "./bg/wiktionary";
 
@@ -55,6 +55,7 @@ dom.button!.addEventListener("click", () => {
     clearHints();
     setLoading(true);
 
+    setCount(hintsCount = 0);
     setTotalCount(hints.count(letters, wordLength));
 
     words.subscribe({
