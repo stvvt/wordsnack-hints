@@ -1,5 +1,6 @@
 import { Observable } from "rxjs/Observable";
 import "rxjs/add/observable/of";
+import "rxjs/add/observable/from";
 import "rxjs/add/operator/mergeMap";
 import "rxjs/add/operator/map";
 
@@ -9,8 +10,8 @@ type IFilter = (words: Observable<string>) => Observable<string>;
 
 function hintsFn(letters: string, wordlength: number, filters: IFilter[] = []): Observable<string> {
     let o = Observable.of(letters.split(""))
-        .mergeMap((i) => combinations.observable(i, wordlength))
-        .mergeMap(permutations.observable)
+        .mergeMap((i) => Observable.from<string[]>(combinations(i, wordlength) as any))
+        .mergeMap((c) => Observable.from<string[]>(permutations(c) as any))
         .map((word) => word.join(""))
     ;
 
